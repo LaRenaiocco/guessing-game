@@ -11,8 +11,15 @@ guess_count = 0
 # repeat
 while True:
 # have player guess a number
-    user_num = int(input("Guess a number between 1 and 100 > "))
-# if number is incorrect give them  a hint
+    user_num = input("Guess a number between 1 and 100 > ")
+    #check user input is integer
+    try:
+        user_num = int(user_num)
+    except:
+        print("That is not a number. Please try again.")
+        continue
+
+# Loop to correct if guess is correct
     if user_num > num:
         print("That is incorrect")
         print("Lower!")
@@ -25,7 +32,4 @@ while True:
         print("That is correct! You win!")
         print(f"You guess the number in {guess_count} tries.")
         break
-# too high or too low
 
-# increase number of guesses
-# if number is correct the player wins
