@@ -1,6 +1,7 @@
 """A number-guessing game."""
 
 # greet player
+print("Hello friend.  Are you ready to play a guessing game?")
 # get player name
 # choose a random number
 # repeat:
