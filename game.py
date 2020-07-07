@@ -3,6 +3,8 @@
 # greet player
 print("Hello friend.  Are you ready to play a guessing game?")
 # get player name
+name = input("What is your name?  ")
+print(f"Nice to meet you, {name}.")
 # choose a random number
 # repeat:
 # have player guess a number
