@@ -84,8 +84,9 @@ def play_computer():
         low = int(input("What is the lowest number of the range? "))
         high = int(input("What is the highest number of the range?"))
         print(f"Now think of a number between {low} and {high}")
+        input("When you have your number in your mind, press enter.")
         while True:
-            computer_guess = random.randint(low, high)
+            computer_guess = low + ((high - low)//2)
             print(f"The computer guesses {computer_guess}")
             player_response = input("Please enter \n [H] for too high \n [L] for too low \n [C] for correct!")
             player_response = player_response.upper()
@@ -115,4 +116,6 @@ def complete_game():
 
 
 complete_game()
+
+# try to make scores list not a global variable 
 
