@@ -12,14 +12,22 @@ def greet_player():
     print("Now lets play.  You'll have 7 tries to guess the correct number")
 
 def play_game():
+    # allow user to set range
+    customize_range = input("Would you like to customize the range of numbers you'll be guessing between? (Y)es or (N)o? ")
+    if customize_range.upper() == "Y":    
+        low_num = int(input("Select a number for the start of the range. "))
+        high_num = int(input("Select a number for the end of the range. "))
+    else:
+        low_num = 1
+        high_num = 100
     # choose a random number
-    num = random.randint(1,100)
+    num = random.randint(low_num,high_num)
     guess_count = 0
     guesses_remaining = 7
     # repeat the following
     while guesses_remaining > 0:
     # have player guess a number
-        user_num = input("Guess a number between 1 and 100 > ")
+        user_num = input(f"OK! Guess a number between {low_num} and {high_num} > ")
         #check user input is integer
         try:
             user_num = int(user_num)
@@ -30,17 +38,21 @@ def play_game():
         # number is too high
         if user_num > num:
             print("That is incorrect")
-            print("Lower!")
+            print("Lower! Lower! Lower!")
             guess_count += 1
             guesses_remaining -= 1
             print(f"You have {guesses_remaining} guesses remaining.")
+            if guesses_remaining == 0:
+                print("You lose!")
         # number is too low    
         elif user_num < num:
             print("That is incorrect")
-            print("Higher!")
+            print("Higher! Higher! Higher!")
             guess_count += 1
             guesses_remaining -= 1
             print(f"You have {guesses_remaining} guesses remaining.")
+            if guesses_remaining == 0:
+                print("You lose!")
         # number is correct
         elif user_num == num:
             print("That is correct! You win!")
