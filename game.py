@@ -71,8 +71,37 @@ def play_again():
         print("Great, let's play again.")
         return True
     else:
-        print("Thanks for playing, goodbye!")
+        print("Thanks for playing!")
         return False
+
+def play_computer():
+    print("Would you like to play against the computer now? (Y)es or (N)o?")
+    play_against_comp = input(" > ")
+    play_against_comp = play_against_comp.upper()
+    if play_against_comp == "Y":
+        print("Ok! Now you get to play against the computer!")
+        print("Let's set the range that the computer will guess within")
+        low = int(input("What is the lowest number of the range? "))
+        high = int(input("What is the highest number of the range?"))
+        print(f"Now think of a number between {low} and {high}")
+        while True:
+            computer_guess = random.randint(low, high)
+            print(f"The computer guesses {computer_guess}")
+            player_response = input("Please enter \n [H] for too high \n [L] for too low \n [C] for correct!")
+            player_response = player_response.upper()
+            if player_response == "H":
+                high = computer_guess
+            elif player_response == "L":
+                low = computer_guess
+            elif player_response == "C":
+                print("The computer always knows...")
+                print("Thanks for playing!")
+                break
+            else:
+                print("That was not a valid option...")
+    else:
+        print("Thanks for playing, Goodbye!")
+
         
 
 def complete_game():
@@ -82,6 +111,7 @@ def complete_game():
         play_again_choice = play_again()
         if play_again_choice == False:
             break
+    play_computer()
 
 
 complete_game()
